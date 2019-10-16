@@ -4,32 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-         /* *{box-sizing: border-box}
+        html{
+            background-image: url("back.JPG");
+            opacity:0.2;
+        }
+         *{box-sizing: border-box}
             
-            .container{width: 300px;
-                       overflow: hidden;
+            .container{
+                /* width: 500px; */
+                       /* overflow: hidden; */
                        margin: 50px auto 0 auto;
+                       display: grid; 
+                       grid-template-columns:1fr 1fr 1fr;
+                       margin-left: 12px;
                      }
-            
-            .container span{width: 100%;
+/*             
+            .container  span{          width: 50%;
                             display: block;
                             text-align: center;
                             font-family: sans-serif;
                             color: #fff;
                             font-size: 25px;
                             background: #446CB3;
+                            margin-top:100px;
+                           } */
+                           h1{
+                            text-align: center;
+                             margin: 0 auto;
+                             text-align: center;
+                            font-family: sans-serif;
+                            color: #fff;
+                            font-size: 25px;
+                            background: #446CB3;
+                            margin-left: 80px;
+                            margin-right: 80px;
+                            height: 50px;
                            }
             
             .container .box{float: left;
                             width: 100px;
                             height: 100px;
-                            border: 1px solid #000;
+                            border: 2px solid #ffffcc;
                             transition: all .25s ease-in-out;
                             font-family: sans-serif; 
                             font-size: 85px;
                             text-align: center;
                             line-height: 100px; 
                             cursor: pointer;
+                            color: #fff;
                           }
                     #box1 , #box2,#box3{
                         border-top: none;
@@ -64,14 +86,13 @@
                     display: block;
                     margin: 10px auto}
             
-            .win{background: #F9690E; color: #fff}
-            #X{
-                display: inline;
-
+            .win{background: #ffcc99; color: #fff;
+            border-radius: 5px;}
+            #X , #O{
+                color: #cc0099;
             }
-            #Y{
-                display: inline;
-            } */
+          
+            
      
     </style>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -79,31 +100,18 @@
 </head>
 <body>
 
-    <div style="display: grid; grid-template-columns:1fr 2fr 1fr;">
-        <div>X</div>
-        <div style="border: 1px solid #000; display: grid; grid-template-columns:1fr 1fr 1fr;">
-            <div style="border: 1px solid #000; gap: 0px; height:100px;"></div>
-            <div style="border: 1px solid #000; gap: 0px; height:100px;"></div>
-            <div style="border: 1px solid #000; gap: 0px; height:100px;"></div>
-            <div style="border: 1px solid #000; gap: 0px; height:100px;"></div>
-            <div style="border: 1px solid #000; gap: 0px; height:100px;"></div>
-            <div style="border: 1px solid #000; gap: 0px; height:100px;"></div>
-            <div style="border: 1px solid #000; gap: 0px; height:100px;"></div>
-            <div style="border: 1px solid #000; gap: 0px; height:100px;"></div>
-            <div style="border: 1px solid #000;gap: 0px; height:100px;"></div>
+  
+        <h1 id="turn"> Play </h1>
+    <div style="display: grid; grid-template-columns:auto auto auto">
+            <div id="X" style="padding-top: 70px; padding-left:250px; font-size: 20px; ">X   </div>
+            
 
-        </div>
-        <div>O</div>
-    </div>
-        
-        <!-- <div class="container" id="main">
-                <div id="X"> X</div>
-                <div id="Y"> Y </div>
-                <span id="turn">Play</span>
-                -->
+        <div class="container" id="main">
+               
+               
 
                 <!-- show X or O on div click -->
-                <!-- <div class="box" id="box1"></div>
+                <div class="box" id="box1"></div>
                 <div class="box" id="box2"></div>
                 <div class="box" id="box3"></div>
                 <div class="box" id="box4"></div>
@@ -112,11 +120,13 @@
                 <div class="box" id="box7"></div>
                 <div class="box" id="box8"></div>
                 <div class="box" id="box9"></div>
-            </div> -->
+            </div>
+            <div id="O" style="grid-column-end: 4; padding-top: 70px; font-size: 20px;  margin-right: 70px;">O</div>
             <!-- Play Again And Reset All Info -->
-            <!-- <button onclick="replay()">Play Again</button> -->
+           
      
- 
+ </div>
+ <button onclick="replay()">Play Again</button>
 <script>
     
     let wins= false;
@@ -133,10 +143,14 @@
                 b2.classList.add("win");
                 b3.classList.add("win");
                 turn.innerHTML = b1.innerHTML + " Won Congrat";
+                let scorx=document.getElementById("X");
+                let scory=document.getElementById("O");
                 if (b1.innerHTML=="X")
                   scorX+=10;
                 else if(b1.innerHTML=="O")
                 scorY+=10;
+                scorx.innerHTML="X's Score:" +" "+  scorX;
+                scory.innerHTML="O's Score:" +" "+  scorY;
                 console.log(scorY,scorX);
                 turn.style.fontSize = "40px";
               for(let j=0;j<boxes.length; j++)
@@ -242,8 +256,10 @@
                     boxes[i].innerHTML = "";
                     turn.innerHTML = "Play";
                     turn.style.fontSize = "25px";
+
                     
                 }
+
                 wins = false;
                 X_or_O =0;
 
