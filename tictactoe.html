@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        html{
+        html
+        {
             background-image: url("back.JPG");
-            opacity:0.2;
+            
         }
+
          *{box-sizing: border-box}
             
             .container{
@@ -84,12 +86,12 @@
                     height: 40px; 
                     font-size: 22px;
                     display: block;
-                    margin: 10px auto}
+                    margin-left: 370px;}
             
             .win{background: #ffcc99; color: #fff;
             border-radius: 5px;}
             #X , #O{
-                color: #cc0099;
+                color: #bbcc00f9;
             }
           
             
@@ -103,7 +105,7 @@
   
         <h1 id="turn"> Play </h1>
     <div style="display: grid; grid-template-columns:auto auto auto">
-            <div id="X" style="padding-top: 70px; padding-left:250px; font-size: 20px; ">X   </div>
+            <div id="X" style="padding-top: 70px; padding-left:150px; font-size: 40px; ">X   </div>
             
 
         <div class="container" id="main">
@@ -121,7 +123,7 @@
                 <div class="box" id="box8"></div>
                 <div class="box" id="box9"></div>
             </div>
-            <div id="O" style="grid-column-end: 4; padding-top: 70px; font-size: 20px;  margin-right: 70px;">O</div>
+            <div id="O" style="grid-column-end: 4; padding-top: 70px; font-size: 40px;  margin-right: 70px;">O</div>
             <!-- Play Again And Reset All Info -->
            
      
@@ -149,8 +151,8 @@
                   scorX+=10;
                 else if(b1.innerHTML=="O")
                 scorY+=10;
-                scorx.innerHTML="X's Score:" +" "+  scorX;
-                scory.innerHTML="O's Score:" +" "+  scorY;
+                scorx.innerHTML="X :" +" "+  scorX;
+                scory.innerHTML="O  :" +" "+  scorY;
                 console.log(scorY,scorX);
                 turn.style.fontSize = "40px";
               for(let j=0;j<boxes.length; j++)
@@ -216,7 +218,7 @@
             // set event onclick
            
             X_or_O= Math.floor(Math.random());
-            console.log("GGG" + X_or_O)
+           
         
             for(let i = 0; i < boxes.length; i++){
                
